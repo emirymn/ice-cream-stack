@@ -17,8 +17,11 @@ public class Finish : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        otherGo = other.gameObject;
-        StaticEvents.onLevelCompleted?.Invoke();
+        if (other.gameObject.CompareTag("Collected") || other.gameObject.CompareTag("Player"))
+        {
+            otherGo = other.gameObject;
+            StaticEvents.onLevelCompleted?.Invoke();
+        }
     }
     private void OnEnable()
     {
@@ -35,30 +38,33 @@ public class Finish : MonoBehaviour
 
     IEnumerator InFinish()
     {
-        //  player.transform.DOMoveY(player.transform.position.y + ((float)levelCoin / (float)200), 1f);
-        StaticEvents.onSellItem?.Invoke(otherGo.gameObject.GetComponent<ItemValue>().itemValue);
+        if (otherGo.gameObject.GetComponent<ItemValue>() != null)
+            StaticEvents.onSellItem?.Invoke(otherGo.gameObject.GetComponent<ItemValue>().itemValue);
         otherGo = null;
-        float timer = (GameManager.instance.levelTotalCash / 33f);
+        int timer = (int)((int)GameManager.instance.levelTotalCash / 35);
         GameObject temp = Instantiate(cash, cashPos.position = new Vector3(cashPos.position.x, cashPos.position.y + 0.25f, cashPos.position.z),
                 cashPos.rotation = Quaternion.Euler(90f, 90f, 0));
         cashList.Add(temp);
         CameraFollower.instance.targetto = cashList[cashList.Count - 1].transform;
         yield return new WaitForSeconds(1f);
-        for (int i = 0; i < timer - 2; i++)
+        Debug.Log(timer);
+        for (int i = 0; i < timer - 1; i++)
         {
             for (int j = 0; j < 9; j++)
             {
                 GameObject cashGo = Instantiate(cash, cashPos.position = new Vector3(cashPos.position.x, cashPos.position.y + 0.25f, cashPos.position.z),
                 cashPos.rotation = Quaternion.Euler(90f, 90f, 0));
                 cashList.Add(cashGo);
-                yield return new WaitForSeconds(0.01f);
-                yield return null;
+               yield return new WaitForSeconds(0.005f);
+              //  yield return null;
                 CameraFollower.instance.targetto = cashList[cashList.Count - 1].transform;
+                Debug.Log(j);
             }
             AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.sell);
         }
         for (int i = 0; i < 3; i++)
         {
+            TotalUIController.instance.UILevelWin();
             AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.win);
             confettiVFX.Play();
             finishConfettiONE.Play();

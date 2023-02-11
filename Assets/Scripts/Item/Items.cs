@@ -49,6 +49,7 @@ public class Items : MonoBehaviour
 
     public void CollidedWithNewItem(Items newItem)
     {
+        if(newItem != null && stackManager != null)
         stackManager.AddItemToStack(newItem);
         AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.collect);
     }

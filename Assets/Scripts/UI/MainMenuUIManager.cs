@@ -25,7 +25,8 @@ public class MainMenuUIManager : MonoBehaviour
     {
         audioS.PlayOneShot(button1);
         DontDestroyOnLoad(audioS.gameObject);
-        SceneManager.LoadScene("Level_2");
+        int currentLevel = PlayerPrefs.GetInt("level");
+        SceneManager.LoadScene((currentLevel % 3) + 3);
 
     }
     public void BackButton()

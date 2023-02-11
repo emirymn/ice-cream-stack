@@ -36,18 +36,18 @@ public class TotalUIController : MonoBehaviour
             Destroy(gameObject);
         else
             instance = this;
-
-        MainMenu.SetActive(true);
+        PlayBeforeScreen.SetActive(true);
+        //   MainMenu.SetActive(true);
     }
     private void OnEnable()
     {
         StaticEvents.onGameStart += UIStartController;
-        StaticEvents.onLevelCompleted += UILevelWin;
+        //   StaticEvents.onLevelCompleted += UILevelWin;
     }
     private void OnDisable()
     {
         StaticEvents.onGameStart -= UIStartController;
-        StaticEvents.onLevelCompleted -= UILevelWin;
+        //  StaticEvents.onLevelCompleted -= UILevelWin;
     }
     #endregion
     #region UI Controllers
@@ -59,15 +59,17 @@ public class TotalUIController : MonoBehaviour
         int currentLevel = PlayerPrefs.GetInt("level");
         LevelText.text = "Level: " + currentLevel;
     }
-    private void UILevelWin()
+    public void UILevelWin()
     {
-      //  AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.sell);
+        AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.sell);
         gameManager.canForward = false;
-        StartCoroutine(UIWinDelay());
+        inGame.SetActive(false);
+        LevelCompleted.SetActive(true);
+        //  StartCoroutine(UIWinDelay());
     }
     public void PlayBeforeScreenClose()
     {
-      //  AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.sell);
+        AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.sell);
         PlayBeforeScreen.SetActive(false);
         inGame.SetActive(true);
         gameManager.canForward = false;
@@ -75,13 +77,12 @@ public class TotalUIController : MonoBehaviour
         LevelText.text = "Level: " + currentLevel;
 
     }
-    public IEnumerator UIWinDelay()
-    {
-        yield return new WaitForSeconds(3);
-        inGame.SetActive(false);
-        LevelCompleted.SetActive(true);
-        yield return null;
-    }
+    /*  public IEnumerator UIWinDelay()
+      {
+          yield return new WaitForSeconds(0.1f);
+
+          yield return null;
+      }*/
     public IEnumerator UILevelLoss()
     {
         yield return new WaitForSeconds(2);
@@ -90,14 +91,14 @@ public class TotalUIController : MonoBehaviour
     }
     public void HomeButon()
     {
-      //  AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.sell);
+        AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.sell);
         Time.timeScale = 0;
         inGame.SetActive(false);
         HomeButtons.SetActive(true);
     }
     public void ResumeButon()
     {
-     //   AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.sell);
+        AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.sell);
         Time.timeScale = 1;
         inGame.SetActive(true);
         HomeButtons.SetActive(false);

@@ -3,7 +3,13 @@ guid: 98fda884a651f2a4fa4b820c3037c352
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - audioS: {instanceID: 0}
+  - loss: {fileID: 8300000, guid: 7096c237e384d435ab4bf80e18bf6a18, type: 3}
+  - win: {fileID: 8300000, guid: d923860589a0748e981a2145fbc32489, type: 3}
+  - collect: {fileID: 8300000, guid: ad59f5a14b4f049789aa350b9c608f20, type: 3}
+  - upgrade: {fileID: 8300000, guid: a446fc3f5b0e6403799cfa0111e8fe3b, type: 3}
+  - sell: {fileID: 8300000, guid: 9e7d29224fe414cb2b9a1a824c36e0bc, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
