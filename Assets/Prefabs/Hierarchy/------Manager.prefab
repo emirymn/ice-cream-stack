@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6988633726427534636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6988633726427534638}
+  - component: {fileID: 6988633726427534639}
+  - component: {fileID: 6988633726427534625}
+  - component: {fileID: 6988633726427534624}
+  - component: {fileID: 6988633726427534627}
+  m_Layer: 0
+  m_Name: ------Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6988633726427534638
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6988633726427534636}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6988633726427534639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6988633726427534636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5992bb1124375bf40bf94929b401fd4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nosIncreaseSpeed: 5
+  Player: {fileID: 0}
+  gameManager: {fileID: 6988633726427534624}
+  swipe: {fileID: 0}
+--- !u!114 &6988633726427534625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6988633726427534636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc86acdfc4c1a894f9a417b3033d5b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  totalPointText: {fileID: 0}
+  PointText: {fileID: 0}
+  PlayerInGameLevelText: {fileID: 0}
+  LevelText: {fileID: 0}
+  moveForward: {fileID: 0}
+  gameManager: {fileID: 6988633726427534624}
+  movementManager: {fileID: 6988633726427534639}
+  playerControllerScript: {fileID: 0}
+  MainMenu: {fileID: 0}
+  inGame: {fileID: 0}
+  LevelCompleted: {fileID: 0}
+  LevelFailed: {fileID: 0}
+  PlayBeforeScreen: {fileID: 0}
+  HomeButtons: {fileID: 0}
+--- !u!114 &6988633726427534624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6988633726427534636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15de90bf7cdb8224289d66cc13186fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalCashText: {fileID: 0}
+  MainMusic: {fileID: 0}
+  canSwipe: 0
+  canForward: 0
+  totalCash: 0
+  levelTotalCash: 0
+--- !u!114 &6988633726427534627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6988633726427534636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3c6ab7cb6995ba4ab5e5ec55d9f5d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectablesParent: {fileID: 0}
+  itemPrefabs:
+  - {fileID: 8057025409098236022, guid: c7cb56f6e355a5a4991827f8f321f28a, type: 3}

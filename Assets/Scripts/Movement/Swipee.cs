@@ -25,6 +25,7 @@ public class Swipee : MonoBehaviour
 
     private void Awake()
     {
+        gameManager = GameObject.Find("------Manager").GetComponent<GameManager>();
         player_ = gameObject;
     }
     #region Mobile Controll

@@ -6,7 +6,6 @@ using UnityEngine;
 public class VersionUpgraderPortal : MonoBehaviour
 {
     [SerializeField] private int upgradeVersitonTo;
-
     #region EVENT
     public event Action onVersionUpgraded;
     #endregion

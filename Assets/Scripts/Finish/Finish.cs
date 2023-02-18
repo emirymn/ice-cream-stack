@@ -50,6 +50,7 @@ public class Finish : MonoBehaviour
         Debug.Log(timer);
         for (int i = 0; i < timer - 1; i++)
         {
+            Time.timeScale = 2;
             for (int j = 0; j < 9; j++)
             {
                 GameObject cashGo = Instantiate(cash, cashPos.position = new Vector3(cashPos.position.x, cashPos.position.y + 0.25f, cashPos.position.z),
@@ -61,6 +62,7 @@ public class Finish : MonoBehaviour
                 Debug.Log(j);
             }
             AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.sell);
+            Time.timeScale = 1;
         }
         for (int i = 0; i < 3; i++)
         {
