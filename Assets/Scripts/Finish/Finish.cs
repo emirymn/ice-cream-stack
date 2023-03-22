@@ -47,7 +47,6 @@ public class Finish : MonoBehaviour
         cashList.Add(temp);
         CameraFollower.instance.targetto = cashList[cashList.Count - 1].transform;
         yield return new WaitForSeconds(1f);
-        Debug.Log(timer);
         for (int i = 0; i < timer - 1; i++)
         {
             Time.timeScale = 2;
@@ -56,10 +55,8 @@ public class Finish : MonoBehaviour
                 GameObject cashGo = Instantiate(cash, cashPos.position = new Vector3(cashPos.position.x, cashPos.position.y + 0.25f, cashPos.position.z),
                 cashPos.rotation = Quaternion.Euler(90f, 90f, 0));
                 cashList.Add(cashGo);
-               yield return new WaitForSeconds(0.005f);
-              //  yield return null;
+                yield return new WaitForSeconds(0.005f);
                 CameraFollower.instance.targetto = cashList[cashList.Count - 1].transform;
-                Debug.Log(j);
             }
             AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.sell);
             Time.timeScale = 1;

@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public float totalCash, levelTotalCash;
     private void Awake()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
         if (instance)
             Destroy(gameObject);
         else
@@ -29,13 +31,11 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //  StaticEvents.onLevelCompleted += LevelCompleted;
         StaticEvents.onObstacle += LossLevel;
 
     }
     private void OnDisable()
     {
-        //  StaticEvents.onLevelCompleted -= LevelCompleted;
         StaticEvents.onObstacle -= LossLevel;
     }
     public void UpgradeTotalCashUI()
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     public void StartGameButton()
     {
         int currentLevel = PlayerPrefs.GetInt("level");
-        SceneManager.LoadScene((currentLevel % 3) + 3);
+        SceneManager.LoadScene((currentLevel % 3) + 1);
     }
     public void MainMenuButton()
     {
@@ -78,19 +78,17 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("level", levelNum + 1);
         PlayerPrefs.Save();
 
-        int defaultSceneCount = 3;
+        int defaultSceneCount = 1;
         int currentLevel = PlayerPrefs.GetInt("level");
         int sceneCount = SceneManager.sceneCountInBuildSettings - 1;
 
         if (sceneCount >= currentLevel)
         {
-            //  SceneManager.LoadScene(currentLevel);
             SceneManager.LoadScene(Random.Range(defaultSceneCount, sceneCount));
         }
         else
         {
-            //  SceneManager.LoadScene(Random.Range(defaultSceneCount, sceneCount));
-            SceneManager.LoadScene((currentLevel % 3) + 3);
+            SceneManager.LoadScene((currentLevel % 3) + 1);
         }
     }
     public void OnClickToRetry()
@@ -107,14 +105,10 @@ public class GameManager : MonoBehaviour
     {
         if (StackSystem.instance.itemStack.Count == 0)
         {
-            //    MainMusic.gameObject.GetComponent<AudioSource>().Pause();
-            //   DontDestroyOnLoad(MainMusic.gameObject);
             AudioSources.instance.audioS.PlayOneShot(AudioSources.instance.loss);
-         //   DontDestroyOnLoad(AudioSources.instance.audioS.gameObject);
             canForward = false;
             canSwipe = false;
             StartCoroutine(TotalUIController.instance.UILevelLoss());
-            //   StartCoroutine(ResumeMusic());
         }
     }
     IEnumerator ResumeMusic()
